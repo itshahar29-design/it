@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;
+    margin-top: 15px;
+}
+p{
+    text-align: center;
+    margin-top: 40px;
+}
+.bir{
+    width: 100px;
+    height: 100px;
+    margin-left: 45px;
+}
+.ikki{
+    width: 100px;
+    height: 100px;
+    margin-left: 90px;
+}
+.uch{
+    width: 100px;
+    height: 100px;
+    margin-left: 90px;
+}
+.turt{
+    width: 100px;
+    height: 100px;
+    margin-left: 90px;
+}
+.besh{
+    width: 100px;
+    height: 100px;
+    margin-left: 45px;
+    margin-top: 45px;
+}
+.olti{
+    width: 100px;
+    height: 100px;
+    margin-left: 90px;
+}
+.yetti{
+    width: 100px;
+    height: 100px;
+    margin-left: 90px;
+}
+.sakkiz{
+    width: 100px;
+    height: 100px;
+    margin-left: 90px;
+}
+#ikkinchi{
+    margin-top: 50px;
+    width: 760px;
+    height: 245px;
+    margin-left: auto;
+    margin-right: auto;
+}

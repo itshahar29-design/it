@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mening Sahifam</title>
+  <style>
+    /* CSS - Stil yozish joyi */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      background-color: #1a1a2e;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #16213e;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    nav a:hover {
+      color: #e94560;
+    }
+
+    /* Main content */
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    /* Section */
+    section {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Headings */
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; color: #1a1a2e; }
+    h3 { font-size: 22px; color: #16213e; }
+
+    /* Paragraph */
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    /* Button */
+    button {
+      background-color: #e94560;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #c73652;
+    }
+
+    /* Input va Form */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    /* Link */
+    a {
+      color: #e94560;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Image */
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    /* List */
+    ul, ol {
+      padding-left: 20px;
+      line-height: 2;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th {
+      background-color: #1a1a2e;
+      color: white;
+      padding: 10px;
+      text-align: left;
+    }
+    td {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* Card */
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      margin: 10px;
+      display: inline-block;
+      width: 220px;
+      vertical-align: top;
+    }
+
+    /* Flex container */
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    /* Grid container */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1a1a2e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    /* Responsive - Kichik ekran */
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Mening Veb-Saytim</h1>
+    <p>HTML, CSS va JavaScript bilan qurilgan</p>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#matlar">Matnlar</a>
+    <a href="#forma">Forma</a>
+    <a href="#jadval">Jadval</a>
+    <a href="#listlar">Listlar</a>
+    <a href="#js">JavaScript</a>
+  </nav>
+
+  <main>
+
+    <!-- MATNLAR SECTION -->
+    <section id="matlar">
+      <h2>Matnlar va Taglar</h2>
+      <h1>Bu H1 sarlavha</h1>
+      <h2>Bu H2 sarlavha</h2>
+      <h3>Bu H3 sarlavha</h3>
+      <p>Bu oddiy paragraph matni. <strong>Bu qalin matn.</strong> <em>Bu kursiv matn.</em></p>
+      <p>Bu <u>tagiga chizilgan</u> va bu <del>o'chirilgan</del> matn.</p>
+      <p><a href="https://google.com" target="_blank">Bu havola (link)</a></p>
+      <blockquote>Bu iqtibos matni — blockquote</blockquote>
+      <code>Bu kod yozuv — code tag</code>
+      <br><br>
+      <hr>
+      <!-- Rasm -->
+      <img src="https://via.placeholder.com/400x200" alt="Rasm" style="margin-top:10px;">
+    </section>
+
+    <!-- FORMA SECTION -->
+    <section id="forma">
+      <h2>Forma (Form)</h2>
+      <form>
+        <label>Ism:</label>
+        <input type="text" placeholder="Ismingizni kiriting">
+
+        <label>Email:</label>
+        <input type="email" placeholder="email@example.com">
+
+        <label>Parol:</label>
+        <input type="password" placeholder="Parol">
+
+        <label>Tug'ilgan sana:</label>
+        <input type="date">
+
+        <label>Raqam:</label>
+        <input type="number" placeholder="Raqam kiriting" min="0" max="100">
+
+        <label>Rang:</label>
+        <input type="color" value="#e94560">
+
+        <label>Xabar:</label>
+        <textarea rows="4" placeholder="Xabaringizni yozing..."></textarea>
+
+        <label>Shahar tanlang:</label>
+        <select>
+          <option>Toshkent</option>
+          <option>Samarqand</option>
+          <option>Buxoro</option>
+        </select>
+
+        <label>
+          <input type="checkbox"> Shartlarni qabul qilaman
+        </label>
+        <br>
+        <label><input type="radio" name="jins"> Erkak</label>
+        <label><input type="radio" name="jins"> Ayol</label>
+        <br><br>
+        <button type="submit">Yuborish</button>
+        <button type="reset" style="background:#888;margin-left:10px;">Tozalash</button>
+      </form>
+    </section>
+
+    <!-- JADVAL SECTION -->
+    <section id="jadval">
+      <h2>Jadval (Table)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Ism</th>
+            <th>Yosh</th>
+            <th>Shahar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Ali</td>
+            <td>22</td>
+            <td>Toshkent</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Vali</td>
+            <td>25</td>
+            <td>Samarqand</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Salim</td>
+            <td>19</td>
+            <td>Buxoro</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- LISTLAR SECTION -->
+    <section id="listlar">
+      <h2>Listlar</h2>
+      <div class="flex">
+        <div>
+          <h3>Tartibsiz list (ul)</h3>
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Tartibli list (ol)</h3>
+          <ol>
+            <li>Birinchi qadam</li>
+            <li>Ikkinchi qadam</li>
+            <li>Uchinchi qadam</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Ichma-ich list</h3>
+          <ul>
+            <li>Frontend
+              <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+              </ul>
+            </li>
+            <li>Backend
+              <ul>
+                <li>Node.js</li>
+                <li>Python</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARD va GRID SECTION -->
+    <section>
+      <h2>Grid va Cardlar</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Card 1</h3>
+          <p>Bu birinchi card matni.</p>
+          <button>Bosing</button>
+        </div>
+        <div class="card">
+          <h3>Card 2</h3>
+          <p>Bu ikkinchi card matni.</p>
+          <button>Bosing</button>
+        </div>
+        <div class="card">
+          <h3>Card 3</h3>
+          <p>Bu uchinchi card matni.</p>
+          <button>Bosing</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- JAVASCRIPT SECTION -->
+    <section id="js">
+      <h2>JavaScript Misollari</h2>
+
+      <!-- Alert -->
+      <button onclick="alert('Salom Dunyo!')">Alert ko'rsat</button>
+
+      <!-- Confirm -->
+      <button onclick="confirmTest()" style="margin-left:10px;">Confirm</button>
+
+      <!-- Counter -->
+      <div style="margin-top:20px;">
+        <h3>Hisoblagich</h3>
+        <button onclick="hisob--; document.getElementById('son').textContent=hisob">−</button>
+        <span id="son" style="font-size:24px; margin:0 16px; font-weight:bold;">0</span>
+        <button onclick="hisob++; document.getElementById('son').textContent=hisob">+</button>
+      </div>
+
+      <!-- Rang o'zgartiruvchi -->
+      <div style="margin-top:20px;">
+        <h3>Rang o'zgartiruvchi</h3>
+        <button onclick="document.body.style.backgroundColor='#1a1a2e'; document.body.style.color='white'">Qora tema</button>
+        <button onclick="document.body.style.backgroundColor='#f0f0f0'; document.body.style.color='#333'" style="margin-left:10px;background:#555;">Oq tema</button>
+      </div>
+
+      <!-- Input + Chiqarish -->
+      <div style="margin-top:20px;">
+        <h3>Ism kiritish</h3>
+        <input type="text" id="ismInput" placeholder="Ismingiz" style="width:250px; display:inline-block;">
+        <button onclick="salom()" style="margin-left:8px;">Salom de</button>
+        <p id="salomNatija" style="color:#e94560; font-weight:bold;"></p>
+      </div>
+
+      <!-- Vaqt ko'rsatish -->
+      <div style="margin-top:20px;">
+        <h3>Hozirgi vaqt</h3>
+        <button onclick="document.getElementById('vaqt').textContent = new Date().toLocaleString()">Vaqtni ko'rsat</button>
+        <p id="vaqt" style="font-size:18px; margin-top:8px;"></p>
+      </div>
+
+      <!-- LocalStorage -->
+      <div style="margin-top:20px;">
+        <h3>LocalStorage</h3>
+        <input type="text" id="saqlInput" placeholder="Biror narsa yozing" style="width:250px; display:inline-block;">
+        <button onclick="localStorage.setItem('matn', document.getElementById('saqlInput').value); alert('Saqlandi!')" style="margin-left:8px;">Saqlash</button>
+        <button onclick="document.getElementById('saqlNatija').textContent = localStorage.getItem('matn') || 'Hech narsa yo\'q'" style="margin-left:8px; background:#555;">O'qish</button>
+        <p id="saqlNatija" style="color:#1a1a2e; font-weight:bold;"></p>
+      </div>
+
+    </section>
+
+    <!-- MEDIA: VIDEO va AUDIO -->
+    <section>
+      <h2>Media Teglar</h2>
+      <h3>Video</h3>
+      <video width="400" controls style="display:block; margin-bottom:16px;">
+        <source src="video.mp4" type="video/mp4">
+        Video ishlamadi.
+      </video>
+
+      <h3>Audio</h3>
+      <audio controls>
+        <source src="audio.mp3" type="audio/mpeg">
+        Audio ishlamadi.
+      </audio>
+
+      <h3>iframe (YouTube, xarita va h.k.)</h3>
+      <iframe
+        width="400"
+        height="220"
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        frameborder="0"
+        allowfullscreen
+        style="border-radius:10px; display:block; margin-top:8px;">
+      </iframe>
+    </section>
+
+    <!-- SEMANTIK TEGLAR -->
+    <section>
+      <h2>Semantik Teglar</h2>
+      <article style="border-left: 4px solid #e94560; padding-left:16px; margin-bottom:12px;">
+        <h3>Article — Maqola</h3>
+        <p>Article tegi mustaqil kontent uchun ishlatiladi.</p>
+      </article>
+      <aside style="background:#f5f5f5; padding:12px; border-radius:8px; margin-bottom:12px;">
+        <strong>Aside — Yon panel</strong>
+        <p>Bu qo'shimcha ma'lumot joyi.</p>
+      </aside>
+      <figure style="margin:0;">
+        <img src="https://via.placeholder.com/300x150" alt="Rasm">
+        <figcaption style="text-align:center; color:#888; font-size:14px;">Rasm izoh — figcaption</figcaption>
+      </figure>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Mening Saytim. Barcha huquqlar himoyalangan.</p>
+    <p>
+      <a href="#" style="color:#e94560;">Telegram</a> |
+      <a href="#" style="color:#e94560;">Instagram</a> |
+      <a href="#" style="color:#e94560;">GitHub</a>
+    </p>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Hisoblagich uchun o'zgaruvchi
+    var hisob = 0;
+
+    // Confirm funksiyasi
+    function confirmTest() {
+      var javob = confirm("Davom etasizmi?");
+      if (javob) {
+        alert("Ha, bosdi!");
+      } else {
+        alert("Yo'q, bosdi!");
+      }
+    }
+
+    // Salom funksiyasi
+    function salom() {
+      var ism = document.getElementById("ismInput").value;
+      if (ism) {
+        document.getElementById("salomNatija").textContent = "Salom, " + ism + "! 👋";
+      } else {
+        document.getElementById("salomNatija").textContent = "Iltimos, ism kiriting!";
+      }
+    }
+
+    // Konsol misollari (F12 bosib ko'rasan)
+    console.log("Sahifa yuklandi!");
+    console.log("Salom, bu JavaScript!");
+
+    // O'zgaruvchilar
+    var ism = "Ali";
+    let yosh = 22;
+    const shahar = "Toshkent";
+
+    // Array
+    let mevalar = ["Olma", "Nok", "Uzum", "Shaftoli"];
+
+    // Ob'ekt
+    let odam = {
+      ism: "Vali",
+      yosh: 25,
+      salom: function() {
+        return "Salom, men " + this.ism;
+      }
+    };
+
+    // For loop
+    for (let i = 0; i < mevalar.length; i++) {
+      console.log(mevalar[i]);
+    }
+
+    // If-else
+    if (yosh >= 18) {
+      console.log("Voyaga yetgan");
+    } else {
+      console.log("Voyaga yetmagan");
+    }
+
+    // Funksiya
+    function qoshish(a, b) {
+      return a + b;
+    }
+    console.log("2 + 3 =", qoshish(2, 3));
+
+    // Arrow funksiya
+    const ko = (a, b) => a * b;
+    console.log("4 * 5 =", ko(4, 5));
+
+    // DOM bilan ishlash
+    // document.getElementById("id")
+    // document.querySelector(".class")
+    // element.textContent = "matn"
+    // element.style.color = "red"
+    // element.addEventListener("click", funksiya)
+
+    // Fetch (API so'rov)
+    // fetch("https://api.example.com/data")
+    //   .then(res => res.json())
+    //   .then(data => console.log(data))
+    //   .catch(err => console.log(err));
+
+  </script>
+
+</body>
+</html>

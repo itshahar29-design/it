@@ -1,0 +1,437 @@
+/* ============================================================
+   CSS ASOSIY KODLAR — TO'LIQ QO'LLANMA (IZOHLAR BILAN)
+   ============================================================ */
+
+
+/* ─────────────────────────────────────────────
+   1. RESET & BOX-MODEL
+   Barcha brauzerlar standart margin/padding
+   qo'shadi — buni noldan boshlaymiz.
+───────────────────────────────────────────── */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* padding/border o'lchamni buzmasin */
+}
+
+
+/* ─────────────────────────────────────────────
+   2. O'ZGARUVCHILAR (CSS Custom Properties)
+   Ranglar, shrift o'lchamlari va boshqalarni
+   bir joyda saqlash qulay.
+───────────────────────────────────────────── */
+
+:root {
+  --asosiy-rang:    #3b82f6;   /* ko'k */
+  --ikkinchi-rang:  #1e40af;   /* to'q ko'k */
+  --matn-rang:      #1f2937;   /* deyarli qora */
+  --fon-rang:       #f9fafb;   /* och kulrang */
+  --xato-rang:      #ef4444;   /* qizil */
+  --muvaffaqiyat:   #22c55e;   /* yashil */
+
+  --shrift-kichik:  0.875rem;  /* 14px */
+  --shrift-normal:  1rem;      /* 16px */
+  --shrift-katta:   1.25rem;   /* 20px */
+  --shrift-sarlavha: 2rem;     /* 32px */
+
+  --radius:         8px;
+  --soya: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ─────────────────────────────────────────────
+   3. SHRIFT & MATN
+───────────────────────────────────────────── */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: var(--shrift-normal);
+  color: var(--matn-rang);
+  background-color: var(--fon-rang);
+  line-height: 1.6; /* satrlar orasidagi bo'shliq */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem;   }
+h3 { font-size: 1.5rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--asosiy-rang);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* ─────────────────────────────────────────────
+   4. LAYOUT — FLEXBOX
+   Elementlarni gorizontal/vertikal tekislash.
+───────────────────────────────────────────── */
+
+.flex {
+  display: flex;
+}
+
+.flex-markaz {   /* o'rtaga tekislash */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-orasi {    /* ikki tomonga yoyish */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-ustun {    /* vertikal yo'nalish */
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap; /* elementlar o'tib keta olsin */
+  gap: 1rem;
+}
+
+.flex-1 { flex: 1; } /* bo'sh joyni to'ldirsin */
+
+
+/* ─────────────────────────────────────────────
+   5. LAYOUT — CSS GRID
+   Jadval ko'rinishidagi tartib.
+───────────────────────────────────────────── */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 ta teng ustun */
+  gap: 1.5rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 ta teng ustun */
+  gap: 1.5rem;
+}
+
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  /* kichik ekranda avtomatik moslashadi */
+  gap: 1rem;
+}
+
+
+/* ─────────────────────────────────────────────
+   6. KONTEYNER
+   Sahifaning eni cheklanib, o'rtada turadi.
+───────────────────────────────────────────── */
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;      /* gorizontal markaz */
+  padding: 0 1.5rem;   /* yon tomonlarda joy */
+}
+
+
+/* ─────────────────────────────────────────────
+   7. TUGMALAR (BUTTON)
+───────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: var(--shrift-normal);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.97); /* bosishda biroz kichraysin */
+}
+
+/* asosiy tugma */
+.btn-asosiy {
+  background-color: var(--asosiy-rang);
+  color: #fff;
+}
+
+.btn-asosiy:hover {
+  background-color: var(--ikkinchi-rang);
+}
+
+/* ikkinchi darajali tugma */
+.btn-ikkinchi {
+  background-color: transparent;
+  color: var(--asosiy-rang);
+  border: 2px solid var(--asosiy-rang);
+}
+
+.btn-ikkinchi:hover {
+  background-color: var(--asosiy-rang);
+  color: #fff;
+}
+
+/* xavfli tugma */
+.btn-xavfli {
+  background-color: var(--xato-rang);
+  color: #fff;
+}
+
+/* o'lcham variantlari */
+.btn-kichik { padding: 0.35rem 0.9rem; font-size: var(--shrift-kichik); }
+.btn-katta  { padding: 0.9rem 2rem;   font-size: var(--shrift-katta);  }
+
+
+/* ─────────────────────────────────────────────
+   8. KARTOCHKA (CARD)
+───────────────────────────────────────────── */
+
+.card {
+  background-color: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--soya);
+  padding: 1.5rem;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-sarlavha {
+  font-size: var(--shrift-katta);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+
+/* ─────────────────────────────────────────────
+   9. FORMA ELEMENTLARI
+───────────────────────────────────────────── */
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: var(--radius);
+  font-size: var(--shrift-normal);
+  font-family: inherit;
+  color: var(--matn-rang);
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--asosiy-rang);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  font-size: var(--shrift-kichik);
+}
+
+.forma-guruh {
+  margin-bottom: 1.25rem;
+}
+
+
+/* ─────────────────────────────────────────────
+   10. POZITSIYALASH
+───────────────────────────────────────────── */
+
+.nisbiy   { position: relative; }
+.mutloq   { position: absolute; }
+.qattiq   { position: fixed;    }  /* sahifa aylantirilsa ham qoladi */
+.yopishiq { position: sticky; top: 0; }
+
+/* yashirish/ko'rsatish */
+.yashirin   { display: none;       }
+.ko'zga-yashirin { visibility: hidden; }
+.shaffof    { opacity: 0;          }
+
+
+/* ─────────────────────────────────────────────
+   11. MATN YORDAMCHI KLASSLARI
+───────────────────────────────────────────── */
+
+.matn-chap    { text-align: left;   }
+.matn-markaz  { text-align: center; }
+.matn-ong     { text-align: right;  }
+
+.qalin        { font-weight: 700; }
+.kursiv       { font-style: italic; }
+.kichik-harf  { text-transform: lowercase; }
+.katta-harf   { text-transform: uppercase; }
+
+.qirqish {                    /* bir qatorda qirqib "..." qo'shadi */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* ─────────────────────────────────────────────
+   12. RANGLAR (FOYDALI KLASSLAR)
+───────────────────────────────────────────── */
+
+.rang-asosiy    { color: var(--asosiy-rang);  }
+.rang-xato      { color: var(--xato-rang);    }
+.rang-muvaffaq  { color: var(--muvaffaqiyat); }
+.rang-kulrang   { color: #6b7280;             }
+
+.fon-asosiy     { background-color: var(--asosiy-rang); color: #fff; }
+.fon-och        { background-color: #eff6ff; }
+.fon-xato       { background-color: #fef2f2; }
+.fon-muvaffaq   { background-color: #f0fdf4; }
+
+
+/* ─────────────────────────────────────────────
+   13. BOʻSHLIQ (SPACING)
+───────────────────────────────────────────── */
+
+/* Margin (tashqi bo'shliq) */
+.m-0  { margin: 0;      }
+.m-1  { margin: 0.25rem;}
+.m-2  { margin: 0.5rem; }
+.m-4  { margin: 1rem;   }
+.m-8  { margin: 2rem;   }
+.mt-4 { margin-top:    1rem; }
+.mb-4 { margin-bottom: 1rem; }
+.ml-4 { margin-left:   1rem; }
+.mr-4 { margin-right:  1rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* Padding (ichki bo'shliq) */
+.p-0  { padding: 0;      }
+.p-1  { padding: 0.25rem;}
+.p-2  { padding: 0.5rem; }
+.p-4  { padding: 1rem;   }
+.p-8  { padding: 2rem;   }
+.pt-4 { padding-top:    1rem; }
+.pb-4 { padding-bottom: 1rem; }
+
+
+/* ─────────────────────────────────────────────
+   14. ANIMATSIYA
+───────────────────────────────────────────── */
+
+/* Kalit kadrlar */
+@keyframes fadings {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0);     }
+}
+
+@keyframes aylanish {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+/* Tayyorkor klasslar */
+.animatsiya-kirish {
+  animation: fadings 0.4s ease forwards;
+}
+
+.aylanuvchi {
+  animation: aylanish 1s linear infinite; /* yuklanish ikonkasi uchun */
+}
+
+/* Tranzitsiya (hover effekti uchun) */
+.yumshoq {
+  transition: all 0.3s ease;
+}
+
+
+/* ─────────────────────────────────────────────
+   15. RESPONSIV DIZAYN (MEDIA QUERIES)
+   Mobil qurilmalarga moslashish.
+───────────────────────────────────────────── */
+
+/* Planshet (768px gacha) */
+@media (max-width: 768px) {
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr; /* ustunlar birga qo'shilib ketadi */
+  }
+
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Mobil (480px gacha) */
+@media (max-width: 480px) {
+  .btn-katta {
+    width: 100%;          /* tugma to'liq kenglikda */
+    justify-content: center;
+  }
+
+  h1 { font-size: 1.5rem; }
+}
+
+
+/* ─────────────────────────────────────────────
+   16. SCROLL BAR (IXTIYORIY)
+───────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #94a3b8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #64748b;
+}
+
+
+/* ─────────────────────────────────────────────
+   17. FOYDALANISH NAMUNASI
+   (HTML da qanday ishlatish)
+
+   <div class="container">
+     <div class="card">
+       <h2 class="card-sarlavha">Salom!</h2>
+       <p>Bu mening birinchi sahifam.</p>
+       <button class="btn btn-asosiy">Bosish</button>
+     </div>
+   </div>
+
+───────────────────────────────────────────── */

@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* padding/border o'lchamni buzmasin */
+}
+h1{
+    text-align: center;
+    background-color: aqua;
+    color: brown;
+  font-family: "Ole", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.black-ops-one-regular {
+  font-family: "Black Ops One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+.e{
+background-color: black;
+color: white;
+}
+#r{
+background-color: blue;
+color: white;
+}
+p{
+    color: aqua;
+}
+.t{
+    color: chocolate;
+}

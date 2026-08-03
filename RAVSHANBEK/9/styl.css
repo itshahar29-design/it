@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #ffffff;
+}
+
+body {
+  font-family: sans-serif;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+
+}
+
+.site-header {
+  width: 100%;
+  background-color: #ffffff00;
+  box-shadow: 0 2px 5px rgba(238, 235, 235, 0);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.body-a{
+    text-align: center;
+    margin-top: 300px;
+}
+h1{
+font-size: 100px;
+
+
+ 
+}
+.alien-block-regular {
+  font-family: "Alien Block", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h4{
+  font-size: 35px ;
+  margin-top: 50px;
+}
+button{
+  width: 100px;
+  height: 60px;
+  border-radius: 50px;
+    margin-top: 70px;
+    background-color: #ff2600;
+    cursor: pointer;
+
+}
+h3{
+    margin-top: 140px;
+    font-size: 55px ;
+}
+button:hover{
+  background-color: rgb(234, 0, 255);
+   width: 200px;
+  height: 60px;
+}

@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* Vizitka 1 (Oldi) */
+.bir {
+    width: 650px;
+    height: 370px;
+    background-color: rgb(160, 11, 11);
+    border: solid 4px #fff;
+    margin: 40px;
+    background-image: url('./bg-fallback.jpg'); 
+    background-position: center;
+    background-size: cover;
+    border-radius: 30px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Vizitka chiroyli ko'rinishi uchun soya */
+}
+
+.bir img {
+    width: 300px;
+}
+
+/* Vizitka 2 (Orqasi) */
+.ikki {
+    width: 650px;
+    height: 370px;
+    background-color: rgb(26, 24, 24);
+    border: solid 4px #fff;
+    margin: 40px;
+    background-image: url('./bg-fallback.jpg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 30px;
+    color: white;
+    display: flex;
+    align-items: center; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.ikkibir {
+    margin-left: 50px; 
+}
+
+.hbir {
+    font-size: 32px;
+    color: white;
+    margin-bottom: 25px; 
+    line-height: 1.2;
+}
+
+.ikkibir h3 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 12px; 
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+}
+
+/* Ikonkalar uchun alohida stil */
+.ikkibir h3 i {
+    margin-right: 15px; 
+    font-size: 20px;
+    color: #00ffcc; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
