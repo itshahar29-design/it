@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EDU MEMORY — Maktab Davomat Tizimi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+  <!-- Top Navigation Bar -->
+  <header class="bg-gradient-to-r from-indigo-700 to-indigo-800 text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-2xl shadow-inner backdrop-blur-sm">
+          🎓
+        </div>
+        <div>
+          <h1 class="text-xl font-bold tracking-tight">EDU MEMORY</h1>
+          <p class="text-xs text-indigo-200">Maktab davomatini boshqarish va ota-onalar hisobot tizimi</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-200 border border-emerald-400/30">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-pulse"></span> GitHub Pages Live
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
+    <!-- Stat Summary Badges -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-100 flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl shrink-0">
+          <i class="fa-solid fa-user-graduate"></i>
+        </div>
+        <div>
+          <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">O'quvchilar</div>
+          <div id="statTotalStudents" class="text-2xl font-bold text-slate-800">0</div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-100 flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl shrink-0">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div>
+          <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Bugun Bor</div>
+          <div id="statTodayPresent" class="text-2xl font-bold text-emerald-600">0</div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-100 flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl shrink-0">
+          <i class="fa-solid fa-circle-xmark"></i>
+        </div>
+        <div>
+          <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Bugun Yo'q</div>
+          <div id="statTodayAbsent" class="text-2xl font-bold text-rose-600">0</div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-100 flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl shrink-0">
+          <i class="fa-solid fa-clock"></i>
+        </div>
+        <div>
+          <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Bugun Sababli</div>
+          <div id="statTodayExcused" class="text-2xl font-bold text-amber-600">0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="flex border-b border-slate-200 mb-6 overflow-x-auto no-scrollbar space-x-2">
+      <button onclick="switchTab('davomat')" id="tabBtnDavomat" class="px-5 py-3 font-semibold text-sm border-b-2 border-indigo-600 text-indigo-600 flex items-center space-x-2 whitespace-nowrap">
+        <i class="fa-solid fa-calendar-check"></i>
+        <span>Kunlik Davomat</span>
+      </button>
+      <button onclick="switchTab('students')" id="tabBtnStudents" class="px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-700 flex items-center space-x-2 whitespace-nowrap">
+        <i class="fa-solid fa-users"></i>
+        <span>O'quvchilar Boshqaruvi</span>
+      </button>
+      <button onclick="switchTab('parent')" id="tabBtnParent" class="px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-700 flex items-center space-x-2 whitespace-nowrap">
+        <i class="fa-solid fa-house-user"></i>
+        <span>Ota-ona Kabineti</span>
+      </button>
+      <button onclick="switchTab('telegram')" id="tabBtnTelegram" class="px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-700 flex items-center space-x-2 whitespace-nowrap">
+        <i class="fa-brands fa-telegram"></i>
+        <span>Telegram Hisobot</span>
+      </button>
+    </div>
+
+    <!-- TAB 1: KUNLIK DAVOMAT -->
+    <div id="tabDavomat" class="space-y-4">
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center space-x-3">
+          <label class="text-sm font-semibold text-slate-700" for="attDate">Sanani tanlang:</label>
+          <input type="date" id="attDate" class="border border-slate-200 rounded-xl px-3 py-2 text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:outline-none" onchange="loadAttendanceForDate()">
+        </div>
+        <div class="flex items-center space-x-2 flex-wrap gap-2">
+          <button onclick="setAllAttendance('present')" class="px-3.5 py-2 text-xs font-semibold rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition">
+            🟢 Barchasi Bor
+          </button>
+          <button onclick="setAllAttendance('absent')" class="px-3.5 py-2 text-xs font-semibold rounded-xl bg-rose-50 text-rose-700 hover:bg-rose-100 transition">
+            🔴 Barchasi Yo'q
+          </button>
+          <button onclick="saveAttendanceToast()" class="px-5 py-2 text-xs font-semibold rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm transition flex items-center space-x-1.5">
+            <i class="fa-solid fa-floppy-disk"></i>
+            <span>Davomatni Saqlash</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-x-auto">
+        <table class="min-w-full divide-y divide-slate-100 text-sm">
+          <thead class="bg-slate-50 text-slate-500 font-semibold">
+            <tr>
+              <th class="px-6 py-3.5 text-left">#</th>
+              <th class="px-6 py-3.5 text-left">O'quvchi Ism-Familiyasi</th>
+              <th class="px-6 py-3.5 text-left">ID Kod</th>
+              <th class="px-6 py-3.5 text-center">Status</th>
+            </tr>
+          </thead>
+          <tbody id="attendanceTableBody" class="divide-y divide-slate-100">
+            <!-- Dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 2: O'QUVCHILAR BOSHQARUVI -->
+    <div id="tabStudents" class="space-y-4 hidden">
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-lg font-bold text-slate-800">Sinf O'quvchilari Ro'yxati</h2>
+          <p class="text-xs text-slate-400">Har bir o'quvchiga ota-onasi ulanishi uchun unikal 6 xonali ID kod beriladi.</p>
+        </div>
+        <form onsubmit="addStudent(event)" class="flex items-center space-x-2 w-full sm:w-auto">
+          <input type="text" id="newStudentName" required placeholder="Masalan: Ali Valiyev" class="border border-slate-200 rounded-xl px-4 py-2 text-sm flex-1 sm:w-72 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+          <button type="submit" class="px-5 py-2 text-sm font-semibold rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm transition shrink-0">
+            ➕ Qo'shish
+          </button>
+        </form>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-x-auto">
+        <table class="min-w-full divide-y divide-slate-100 text-sm">
+          <thead class="bg-slate-50 text-slate-500 font-semibold">
+            <tr>
+              <th class="px-6 py-3.5 text-left">#</th>
+              <th class="px-6 py-3.5 text-left">Ism-Familiya</th>
+              <th class="px-6 py-3.5 text-left">Ota-ona uchun ID Kod</th>
+              <th class="px-6 py-3.5 text-center">Jami Davomat</th>
+              <th class="px-6 py-3.5 text-right">Amallar</th>
+            </tr>
+          </thead>
+          <tbody id="studentsTableBody" class="divide-y divide-slate-100">
+            <!-- Dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 3: OTA-ONA KABINETI -->
+    <div id="tabParent" class="space-y-6 hidden">
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+        <h2 class="text-lg font-bold text-slate-800 mb-1">Ota-ona Profil Simulyatori</h2>
+        <p class="text-xs text-slate-400 mb-4">Ota-ona botda yoki saytda farzandining 6 xonali ID kodini kiritib farzandini o'ziga bog'laydi.</p>
+        <form onsubmit="linkParent(event)" class="flex items-center space-x-2 max-w-md">
+          <input type="text" id="parentStudentCode" required placeholder="Masalan: WXR58P" class="border border-slate-200 rounded-xl px-4 py-2 text-sm uppercase tracking-widest font-mono focus:ring-2 focus:ring-indigo-500 focus:outline-none flex-1">
+          <button type="submit" class="px-5 py-2 text-sm font-semibold rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition">
+            Bog'lash
+          </button>
+        </form>
+      </div>
+
+      <div>
+        <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wider mb-3">Bog'langan Farzandlar va Ularning Davomat Ko'rsatkichlari</h3>
+        <div id="parentChildrenList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Dynamic cards -->
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: TELEGRAM XABAR KO'RINIShI -->
+    <div id="tabTelegram" class="space-y-6 hidden">
+      <div class="max-w-xl mx-auto bg-slate-100 rounded-3xl p-6 shadow-sm border border-slate-200">
+        <div class="flex items-center space-x-3 pb-4 mb-4 border-b border-slate-200">
+          <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-lg">
+            🤖
+          </div>
+          <div>
+            <div class="font-bold text-slate-800 text-sm">EDU MEMORY Bot</div>
+            <div class="text-xs text-blue-600">bot @edu_memory_bot</div>
+          </div>
+        </div>
+
+        <!-- Telegram Message Bubble -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm text-sm border border-slate-200/60 leading-relaxed font-mono whitespace-pre-wrap text-slate-700" id="telegramMessagePreview">
+        </div>
+        <div class="flex justify-between items-center mt-2 px-1">
+          <button onclick="copyTelegramReport()" class="text-xs text-indigo-600 hover:text-indigo-800 font-semibold flex items-center space-x-1">
+            <i class="fa-regular fa-copy"></i>
+            <span>Nusxa olish</span>
+          </button>
+          <div class="text-[10px] text-slate-400">18:00 (Shanba) ✓✓</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400">
+    EDU MEMORY &copy; 2026 — Maktab davomatini boshqarish platformasi | GitHub Pages Edition
+  </footer>
+
+  <script>
+    const DEFAULT_STUDENTS = [
+      { id: 1, full_name: "Ali Valiyev", student_code: "WXR58P" },
+      { id: 2, full_name: "Malika Karimova", student_code: "5JHBTJ" },
+      { id: 3, full_name: "Jasur Toshmatov", student_code: "996ERP" },
+      { id: 4, full_name: "Zilola Rahimova", student_code: "KUBMC5" },
+      { id: 5, full_name: "Bobur Oripov", student_code: "XYYQBJ" }
+    ];
+
+    let students = JSON.parse(localStorage.getItem('edu_students') || 'null');
+    if (!students || !students.length) {
+      students = DEFAULT_STUDENTS;
+      localStorage.setItem('edu_students', JSON.stringify(students));
+    }
+
+    let attendanceRecords = JSON.parse(localStorage.getItem('edu_attendance') || 'null');
+    if (!attendanceRecords) {
+      const today = new Date().toISOString().split('T')[0];
+      const d1 = new Date(Date.now() - 2 * 86400000).toISOString().split('T')[0];
+      const d2 = new Date(Date.now() - 1 * 86400000).toISOString().split('T')[0];
+      attendanceRecords = {
+        [d1]: { 1: 'present', 2: 'present', 3: 'present', 4: 'present', 5: 'absent' },
+        [d2]: { 1: 'present', 2: 'excused', 3: 'present', 4: 'present', 5: 'present' },
+        [today]: { 1: 'present', 2: 'present', 3: 'absent', 4: 'present', 5: 'present' }
+      };
+      localStorage.setItem('edu_attendance', JSON.stringify(attendanceRecords));
+    }
+
+    let linkedCodes = JSON.parse(localStorage.getItem('edu_linked_codes') || '["WXR58P", "5JHBTJ"]');
+
+    function saveState() {
+      localStorage.setItem('edu_students', JSON.stringify(students));
+      localStorage.setItem('edu_attendance', JSON.stringify(attendanceRecords));
+      localStorage.setItem('edu_linked_codes', JSON.stringify(linkedCodes));
+    }
+
+    function switchTab(name) {
+      ['davomat', 'students', 'parent', 'telegram'].forEach(t => {
+        document.getElementById('tab' + t.charAt(0).toUpperCase() + t.slice(1)).classList.add('hidden');
+        const btn = document.getElementById('tabBtn' + t.charAt(0).toUpperCase() + t.slice(1));
+        btn.classList.remove('border-indigo-600', 'text-indigo-600');
+        btn.classList.add('border-transparent', 'text-slate-500');
+      });
+      document.getElementById('tab' + name.charAt(0).toUpperCase() + name.slice(1)).classList.remove('hidden');
+      const activeBtn = document.getElementById('tabBtn' + name.charAt(0).toUpperCase() + name.slice(1));
+      activeBtn.classList.remove('border-transparent', 'text-slate-500');
+      activeBtn.classList.add('border-indigo-600', 'text-indigo-600');
+
+      if (name === 'telegram') renderTelegramPreview();
+      if (name === 'parent') renderParentChildren();
+      if (name === 'students') renderStudentsTable();
+      if (name === 'davomat') loadAttendanceForDate();
+    }
+
+    function getStats(studentId) {
+      let p = 0, a = 0, e = 0;
+      Object.values(attendanceRecords).forEach(dayRecord => {
+        const st = dayRecord[studentId];
+        if (st === 'present') p++;
+        else if (st === 'absent') a++;
+        else if (st === 'excused') e++;
+      });
+      const total = p + a + e;
+      const percent = total > 0 ? ((p / total) * 100).toFixed(1) : "0.0";
+      return { present: p, absent: a, excused: e, total, percent };
+    }
+
+    function renderStudentsTable() {
+      const tbody = document.getElementById('studentsTableBody');
+      tbody.innerHTML = '';
+      students.forEach((s, idx) => {
+        const stats = getStats(s.id);
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50/50 transition';
+        tr.innerHTML = `
+          <td class="px-6 py-4 font-semibold text-slate-400">${idx + 1}</td>
+          <td class="px-6 py-4 font-semibold text-slate-800">${s.full_name}</td>
+          <td class="px-6 py-4">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">
+              ${s.student_code}
+            </span>
+          </td>
+          <td class="px-6 py-4 text-center">
+            <div class="flex items-center justify-center space-x-2">
+              <span class="font-bold text-slate-700">${stats.percent}%</span>
+              <div class="w-16 bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                <div class="bg-emerald-500 h-1.5 rounded-full" style="width: ${stats.percent}%"></div>
+              </div>
+            </div>
+          </td>
+          <td class="px-6 py-4 text-right">
+            <button onclick="deleteStudent(${s.id})" class="text-rose-500 hover:text-rose-700 transition p-1">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      document.getElementById('statTotalStudents').innerText = students.length;
+    }
+
+    function loadAttendanceForDate() {
+      const dateVal = document.getElementById('attDate').value;
+      if (!attendanceRecords[dateVal]) {
+        attendanceRecords[dateVal] = {};
+      }
+      const dayRecord = attendanceRecords[dateVal];
+      const tbody = document.getElementById('attendanceTableBody');
+      tbody.innerHTML = '';
+
+      students.forEach((s, idx) => {
+        const st = dayRecord[s.id] || null;
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50/50 transition';
+        tr.innerHTML = `
+          <td class="px-6 py-4 font-semibold text-slate-400">${idx + 1}</td>
+          <td class="px-6 py-4 font-semibold text-slate-800">${s.full_name}</td>
+          <td class="px-6 py-4 font-mono text-xs text-slate-500">${s.student_code}</td>
+          <td class="px-6 py-4 text-center">
+            <div class="inline-flex p-1 bg-slate-100 rounded-xl space-x-1">
+              <button onclick="setStatus(${s.id}, 'present')" class="px-3 py-1 rounded-lg text-xs font-semibold transition ${st === 'present' ? 'bg-emerald-500 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-200'}">
+                🟢 Bor
+              </button>
+              <button onclick="setStatus(${s.id}, 'absent')" class="px-3 py-1 rounded-lg text-xs font-semibold transition ${st === 'absent' ? 'bg-rose-500 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-200'}">
+                🔴 Yo'q
+              </button>
+              <button onclick="setStatus(${s.id}, 'excused')" class="px-3 py-1 rounded-lg text-xs font-semibold transition ${st === 'excused' ? 'bg-amber-500 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-200'}">
+                🟡 Sababli
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+      updateTodayBadges();
+    }
+
+    function setStatus(sid, val) {
+      const dateVal = document.getElementById('attDate').value;
+      if (!attendanceRecords[dateVal]) attendanceRecords[dateVal] = {};
+      attendanceRecords[dateVal][sid] = val;
+      saveState();
+      loadAttendanceForDate();
+    }
+
+    function setAllAttendance(val) {
+      const dateVal = document.getElementById('attDate').value;
+      if (!attendanceRecords[dateVal]) attendanceRecords[dateVal] = {};
+      students.forEach(s => {
+        attendanceRecords[dateVal][s.id] = val;
+      });
+      saveState();
+      loadAttendanceForDate();
+    }
+
+    function saveAttendanceToast() {
+      saveState();
+      alert("✅ Davomat muvaffaqiyatli saqlandi!");
+      renderStudentsTable();
+    }
+
+    function updateTodayBadges() {
+      const dateVal = document.getElementById('attDate').value;
+      const dayRecord = attendanceRecords[dateVal] || {};
+      let p = 0, a = 0, e = 0;
+      students.forEach(s => {
+        const st = dayRecord[s.id];
+        if (st === 'present') p++;
+        else if (st === 'absent') a++;
+        else if (st === 'excused') e++;
+      });
+      document.getElementById('statTodayPresent').innerText = p;
+      document.getElementById('statTodayAbsent').innerText = a;
+      document.getElementById('statTodayExcused').innerText = e;
+    }
+
+    function addStudent(e) {
+      e.preventDefault();
+      const input = document.getElementById('newStudentName');
+      const name = input.value.trim();
+      if (!name) return;
+
+      const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      let code = "";
+      for (let i = 0; i < 6; i++) {
+        code += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+      }
+
+      const newId = students.length > 0 ? Math.max(...students.map(s => s.id)) + 1 : 1;
+      students.push({ id: newId, full_name: name, student_code: code });
+      saveState();
+      input.value = '';
+      renderStudentsTable();
+      loadAttendanceForDate();
+    }
+
+    function deleteStudent(id) {
+      if (!confirm("O'quvchini ro'yxatdan o'chirishni tasdiqlaysizmi?")) return;
+      students = students.filter(s => s.id !== id);
+      saveState();
+      renderStudentsTable();
+      loadAttendanceForDate();
+    }
+
+    function linkParent(e) {
+      e.preventDefault();
+      const input = document.getElementById('parentStudentCode');
+      const code = input.value.trim().toUpperCase();
+      const student = students.find(s => s.student_code === code);
+      if (!student) {
+        alert("❌ Bunday ID kodli o'quvchi topilmadi!");
+        return;
+      }
+      if (linkedCodes.includes(code)) {
+        alert(`ℹ️ ${student.full_name} allaqachon bog'langan!`);
+        return;
+      }
+      linkedCodes.push(code);
+      saveState();
+      alert(`✅ ${student.full_name} muvaffaqiyatli bog'landi!`);
+      input.value = '';
+      renderParentChildren();
+    }
+
+    function renderParentChildren() {
+      const container = document.getElementById('parentChildrenList');
+      container.innerHTML = '';
+      const linked = students.filter(s => linkedCodes.includes(s.student_code));
+      if (!linked.length) {
+        container.innerHTML = '<div class="col-span-2 text-slate-400 text-sm py-4">Hozircha birorta ham farzand bog\'lanmagan.</div>';
+        return;
+      }
+      linked.forEach(c => {
+        const stats = getStats(c.id);
+        const div = document.createElement('div');
+        div.className = 'bg-white rounded-2xl p-5 shadow-sm border border-slate-100';
+        div.innerHTML = `
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <h4 class="font-bold text-slate-800 text-base">${c.full_name}</h4>
+              <span class="text-xs font-mono text-slate-400">ID Kod: ${c.student_code}</span>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs font-bold ${stats.percent >= 80 ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">
+              ${stats.percent}% Davomat
+            </span>
+          </div>
+          <div class="grid grid-cols-3 gap-2 text-center text-xs mt-3">
+            <div class="bg-emerald-50 rounded-xl py-2">
+              <div class="text-emerald-700 font-bold text-base">${stats.present}</div>
+              <div class="text-emerald-600/70">🟢 Bor</div>
+            </div>
+            <div class="bg-rose-50 rounded-xl py-2">
+              <div class="text-rose-700 font-bold text-base">${stats.absent}</div>
+              <div class="text-rose-600/70">🔴 Yo'q</div>
+            </div>
+            <div class="bg-amber-50 rounded-xl py-2">
+              <div class="text-amber-700 font-bold text-base">${stats.excused}</div>
+              <div class="text-amber-600/70">🟡 Sababli</div>
+            </div>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function renderTelegramPreview() {
+      const linked = students.filter(s => linkedCodes.includes(s.student_code));
+      let blocks = [];
+      linked.forEach(c => {
+        const stats = getStats(c.id);
+        blocks.push(`👤 ${c.full_name}\n🟢 Bor: ${stats.present}\n🔴 Yo‘q: ${stats.absent}\n🟡 Sababli: ${stats.excused}\n📈 Davomat: ${stats.percent}%`);
+      });
+
+      const today = new Date().toLocaleDateString('ru-RU');
+      const text = `📊 EDU MEMORY\n📅 Haftalik davomat hisoboti\n🗓 ${today}\n\n` + blocks.join('\n\n');
+      document.getElementById('telegramMessagePreview').innerText = text;
+    }
+
+    function copyTelegramReport() {
+      const text = document.getElementById('telegramMessagePreview').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("📋 Xabardan nusxa olindi!");
+      });
+    }
+
+    window.onload = () => {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('attDate').value = today;
+      renderStudentsTable();
+      loadAttendanceForDate();
+    };
+  </script>
+</body>
+</html>
